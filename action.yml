@@ -1,0 +1,30 @@
+name: PR Timeline Commitizen Commits List
+description: GitHub action to add commit history to PR body
+
+inputs:
+  github-token:
+    description: Secret GitHub API token to use for making API requests
+    default: ${{ github.token }}
+    required: true
+  owner:
+    description: The name of the owner of the github repository
+    required: true
+  repo:
+    description: The name of the github repository
+    required: true
+  pull_number:
+    description: The pull request number
+    required: true
+  update_body:
+    description: Update PR body with output
+    required: false
+    default: true
+outputs:
+  pull-request-body:
+    description: Markdown with commit history
+runs:
+  using: node16
+  main: dist/index.js
+branding:
+  icon: git-pull-request
+  color: green
